@@ -241,7 +241,7 @@ public class AddUpdateEventDialogFragment extends DialogFragment implements Numb
 
     private void updateEvent() {
         String activityName = "";
-        String location = "";
+        String type = "";
         String eventDate = "";
         String attendingTime = "";
         String reporterName = "";
@@ -251,6 +251,12 @@ public class AddUpdateEventDialogFragment extends DialogFragment implements Numb
         String bedroom = "";
         String address = "";
 
+        if (etType.getText().toString().isEmpty()) {
+            showAlert("Type is required!");
+            return;
+        } else {
+            type = etType.getText().toString();
+        }
 
         if (tvEventDate.getText().toString().isEmpty()) {
             showAlert("Date is required!");
@@ -289,7 +295,7 @@ public class AddUpdateEventDialogFragment extends DialogFragment implements Numb
         this.event = new Event(
                 this.event.getEventId(),
                 activityName,
-                location,
+                type,
                 eventDate,
                 reporterName,
                 furnitureType,
