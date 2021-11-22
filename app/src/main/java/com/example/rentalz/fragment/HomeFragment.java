@@ -160,7 +160,6 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onAdded(Event event) {
-                      //
                     }
                 },
                 AddUpdateEventDialogFragment.EventType.Update
@@ -181,10 +180,9 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onAdded(Event event) {
-                        // add item mới vào list
-                        events.add(event);
+                        // reload events after added
+                        events = databaseHelper.getAllEvents();
                         adapter.submitList(events);
-                        adapter.notifyItemInserted(events.size() -1 );
                     }
                 },
                 AddUpdateEventDialogFragment.EventType.Add
